@@ -53,15 +53,24 @@ public class TasksDAO extends AbstractDAO {
         addTask(task);
     }
 
+    public void delete(String id) {
+        getTestIndex().remove(id);
+    }
+
     private Task getTaskById(String id) {
+        ScoredDocument doc = getTaskDoc(id);
+        Task task = createTask(doc);
+        return task;
+    }
+
+    private ScoredDocument getTaskDoc(String id) {
         Collection<ScoredDocument> docs = getTestIndex().search(ID + ":" + id).getResults();
         if (docs.size() != 1) {
             throw new RuntimeException("Invalid id specified.");
         }
 
         ScoredDocument doc = docs.iterator().next();
-        Task task = createTask(doc);
-        return task;
+        return doc;
     }
 
 
@@ -94,6 +103,7 @@ public class TasksDAO extends AbstractDAO {
         task.setTaskDone(taskDone);
         return task;
     }
+
 
 
 

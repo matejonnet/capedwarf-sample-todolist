@@ -13,15 +13,19 @@ public class HtmlPage {
     }
 
     public String getHtml() {
-        String html="<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
-                "<html>\n" +
+        String html="<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
                 "<head>\n" +
                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
                 "<title>ToDo List</title>\n" +
-                "<link type=\"text/css\" rel=\"stylesheet\" href=\"" +  ctxPath + "/css/style.css\">\n" +
+                "<link href=\"" +  ctxPath + "/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
+                "<link href=\"" +  ctxPath + "/css/style.css\" rel=\"stylesheet\">\n" +
                 "</head>\n" +
                 "<body>\n" +
+                "<script src=\"" +  ctxPath + "/js/bootstrap.min.js\"></script>\n" +
+                "<div class=\"container\">\n" +
                 body + "\n" +
+                "</div>\n" +
                 "</body>\n" +
                 "</html>\n";
         return html;
@@ -32,15 +36,18 @@ public class HtmlPage {
     }
 
     public void addInputForm(String q) {
-        this.body += "<form method=\"GET\">" +
-        		"<p>" +
-        		"new task: <input type=\"text\" name=\"message\" />\n" +
-        		"<input type=\"submit\" value=\"add\" />\n" +
-        		"</p>\n" +
-                "<p>\n" +
-        		"search: <input type=\"text\" name=\"q\" value=\""+ q + "\" />\n" +
-        		"<input type=\"submit\" value=\"search\" />\n" +
-        		"</p>\n" +
+        this.body += "<form method=\"GET\">\n" +
+        		"<label>New Task</label>\n" +
+        		"<div class=\"input-append\">\n" +
+        		"<input type=\"text\" name=\"message\" placeholder=\"Enter new task ...\"/>\n" +
+        		"<button type=\"submit\" class=\"btn\">Add</button>\n" +
+        		"</div>\n" +
+        		"<div class=\"input-append\">\n" +
+        		"<label>Filter</label>\n" +
+        		"<input type=\"text\" name=\"q\" value=\""+ q + "\"/>\n" +
+        		"<button type=\"submit\" class=\"btn\">Apply</button>\n" +
+        		"<button type=\"submit\" class=\"btn\" onclick=\"this.form.q.value='';this.form.sumit();\">Remove</button>\n" +
+        		"</div>\n" +
         		"</form>\n";
     }
 }
