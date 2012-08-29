@@ -34,6 +34,9 @@ public class Index extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 
 	    String q = request.getParameter("q");
+	    if (q == null) {
+	        q = "";
+	    }
 	    String postedMessage = request.getParameter("message");
 	    String markDoneTask = request.getParameter("markDone");
 	    String markNotDoneTask = request.getParameter("markNotDone");
