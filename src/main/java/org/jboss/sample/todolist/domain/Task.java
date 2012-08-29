@@ -45,4 +45,8 @@ public class Task {
     public void setTaskDone(String taskDone) {
         this.taskDone = taskDone != null && taskDone.equals("true");
     }
+
+    public void setTaskNotDone() {
+        this.taskDone = false;
+    }
 }

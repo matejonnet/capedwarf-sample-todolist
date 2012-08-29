@@ -31,14 +31,14 @@ public class HtmlPage {
         this.body += html;
     }
 
-    public void addInputForm() {
+    public void addInputForm(String q) {
         this.body += "<form method=\"GET\">" +
         		"<p>" +
         		"new task: <input type=\"text\" name=\"message\" />\n" +
         		"<input type=\"submit\" value=\"add\" />\n" +
         		"</p>\n" +
                 "<p>\n" +
-        		"search: <input type=\"text\" name=\"q\" />\n" +
+        		"search: <input type=\"text\" name=\"q\" value=\""+ q + "\" />\n" +
         		"<input type=\"submit\" value=\"search\" />\n" +
         		"</p>\n" +
         		"</form>\n";

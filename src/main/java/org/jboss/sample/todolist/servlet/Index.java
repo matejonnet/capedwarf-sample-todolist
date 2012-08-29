@@ -35,18 +35,22 @@ public class Index extends HttpServlet {
 
 	    String q = request.getParameter("q");
 	    String postedMessage = request.getParameter("message");
-	    String[] doneTasks = request.getParameterValues("taskDone");
+	    String markDoneTask = request.getParameter("markDone");
+	    String markNotDoneTask = request.getParameter("markNotDone");
 
 	    if (postedMessage != null && !postedMessage.equals("")) {
 	        tasksDAO.addTask(new Task(postedMessage));
 	    }
 
-	    if (doneTasks != null)
-	    for (String taskId : doneTasks) {
-	        tasksDAO.markTaskDone(taskId);
-        }
+	    if (markDoneTask != null && !markDoneTask.isEmpty()) {
+	        tasksDAO.markTaskDone(markDoneTask);
+	    }
 
-	    htmlPage.addInputForm();
+	    if (markNotDoneTask != null && !markNotDoneTask.isEmpty()) {
+	        tasksDAO.markTaskNotDone(markNotDoneTask);
+	    }
+
+	    htmlPage.addInputForm(q);
 	    htmlPage.addToBody(getToDoList(tasksDAO, q));
 
 	    response.setContentType("text/html");
