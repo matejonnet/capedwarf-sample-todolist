@@ -87,7 +87,6 @@ public class TasksDAO extends AbstractDAO {
     }
 
     private Task createTask(Document document) {
-        //String id = document.getId();
         String id = document.getOnlyField(ID).getText();
         String taskDone = document.getOnlyField(TASK_DONE).getText();
         String message = document.getOnlyField(MESSAGE).getText();

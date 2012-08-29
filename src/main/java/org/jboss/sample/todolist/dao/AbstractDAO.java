@@ -61,7 +61,6 @@ public abstract class AbstractDAO {
     }
 
     protected String generateId() {
-        //return UUID.randomUUID().toString();
         return System.currentTimeMillis() + "";
     }
 
